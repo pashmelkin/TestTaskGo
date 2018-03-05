@@ -30,11 +30,14 @@ const (
 type CheckoutStrategy func(int) float64
 
 //Should be float32?
-var ClassicNum, StandoutNum, PremiumNum int = 0, 0, 0
+var ClassicNum, StandoutNum, PremiumNum int
 
 var strategies [3]CheckoutStrategy
 
 func NewCustomer(name string) {
+	ClassicNum = 0
+	StandoutNum = 0
+	PremiumNum = 0
 switch name {
 case "Uniliver":
 	strategies[0] = ClassicThreeForTwoDeal
