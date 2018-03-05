@@ -69,6 +69,36 @@ func TestNewCustomerFord(t *testing.T)  {
         t.Errorf("Wrong mapping for Premium Strategy: %s", name)
   }
 }
+
+func TestTotalUniliver(t *testing.T)  {
+  expectedTotal := ClassicPrice * 3
+
+  NewCustomer("Uniliver")
+  Add(Classic)
+  Add(Classic)
+  Add(Classic)
+  Add(Classic)
+  total := Total()
+  if total != expectedTotal  {
+      t.Errorf("Wrong Total for Uniliver: %5.2f, expected: %5.2f", total, expectedTotal)
+  }
+}
+func TestTotalNike(t *testing.T)  {
+  expectedTotal := ClassicPrice + StandoutPrice + 379.99 * 4
+
+  NewCustomer("Nike")
+  Add(Classic)
+  Add(Standout)
+  Add(Premium)
+  Add(Premium)
+  Add(Premium)
+  Add(Premium)
+  total := Total()
+  if total != expectedTotal  {
+      t.Errorf("Wrong Total for Nike: %5.2f, expected: %5.2f", total, expectedTotal)
+  }
+}
+
 func GetFunctionName(i interface{}) string {
     return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
 }
